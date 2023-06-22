@@ -1,0 +1,19 @@
+Group Project Proposal
+Project Name:
+Team Members: Alex Ponce (grp ldr), Joshua Lazar, Tony Schock
+
+Technology: MERN
+Wire-frame: https://share.balsamiq.com/c/vWrQi9GGL4A2Vo1eujfTiY.png
+
+Description: This is a e-commerce site where users can search products, add products to their checkout, and then buy products.  Login is possible at any time during UX, but will be necessary to complete the purchase. 
+
+Feature List: 
+- Search for a product
+- View a category of products
+- View a single product
+- Add product to "checkout"
+- Continue shopping (product id and qty remain in state)
+- checkout
+- ? simulated payment
+- ? payment info
+- ? confirmation
