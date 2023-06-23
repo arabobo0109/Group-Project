@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import NavBar from './components/NavBar';
 import OneProduct from './components/OneProduct';
+import CategoryWithProducts from './components/CategoryWithProducts';
 
 function App() {
 
@@ -19,10 +20,11 @@ function App() {
       <BrowserRouter>
       <NavBar user={user} setUser={setUser}/>
         <Routes>
-        <Route exact path ="/" element={<LandingPage  />} />
+          <Route exact path ="/" element={<LandingPage  />} />
           <Route path='/login' element={<Login setUser={setUser}/>} />
           <Route path='/register' element={<Register setUser={setUser} />} />
           <Route path='/oneProduct/:productId' element={<OneProduct />} />
+          <Route path='/category/:categoryName' element={<CategoryWithProducts />} />
         </Routes>
       </BrowserRouter>
     </div>

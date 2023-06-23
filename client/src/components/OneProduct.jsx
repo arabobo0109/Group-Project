@@ -26,7 +26,14 @@ const OneProduct = () => {
             <h1 className="mt-4">{product.title}</h1>
             <div className="d-flex align-items-center my-4">
                 <img className="w-25 mr-4" src={product.image} alt="bag" />
-                <p className="text-wrap">{product.description}</p>
+                <div>
+                    <p className="text-wrap">{product.description}</p>
+                    <p>${product.price}</p>
+                    <form>
+                        <input className="mt-4" type="number" name="quantity" placeholder='quantity' />
+                        <button>Buy</button>
+                    </form>
+                </div>
             </div>
         </div>
     );

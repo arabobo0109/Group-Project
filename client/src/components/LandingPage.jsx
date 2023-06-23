@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 const LandingPage = () => {
   const [data, setData] = useState({
@@ -29,7 +30,7 @@ const LandingPage = () => {
   const renderCategory = (category, item) => (
     <div key={category} className="col-lg-3 col-md-6 mb-3">
       <div className="card h-100">
-        <img src={item.image} alt={category} className="card-img-top" style={{width: '200px', height: '200px'}} />
+        <Link to={`/category/${category.toLowerCase()}`}><img src={item.image} alt={category} className="card-img-top" style={{width: '200px', height: '200px'}} /></Link>
         <div className="card-body">
           <h5 className="card-title">{category}</h5>
         </div>
@@ -42,7 +43,7 @@ const LandingPage = () => {
       <h1 className="text-center">Best Sellers!</h1>
       <div className="row">
         {renderCategory('Electronics', data.electronics)}
-        {renderCategory('Jewelry', data.jewelery)}
+        {renderCategory('Jewelery', data.jewelery)}
         {renderCategory("Men's Clothing", data.mens_clothing)}
         {renderCategory("Women's Clothing", data.womens_clothing)}
       </div>
