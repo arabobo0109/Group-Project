@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ setIsLogged }) => {
 
     const navigate = useNavigate();
 
@@ -24,6 +24,7 @@ const Login = () => {
             // withCredentials allows the cookie to be sent from server to client
             .then((res) => {
                 console.log(res);
+                setIsLogged(true); // Set isLogged to true after successful login
                 navigate('/')
             })
             .catch((err) => {
