@@ -8,6 +8,8 @@ import Register from './components/Register';
 import NavBar from './components/NavBar';
 import OneProduct from './components/OneProduct';
 import CategoryWithProducts from './components/CategoryWithProducts';
+import Payment from './components/Payment';
+import Success from './components/Success';
 
 function App() {
 
@@ -28,6 +30,8 @@ function App() {
           <Route path='/register' element={<Register setUser={setUser} />} />
           <Route path='/oneProduct/:productId' element={<OneProduct />} />
           <Route path='/category/:categoryName' element={<CategoryWithProducts />} />
+          <Route path='/payment' element={<Payment />} />
+          <Route path='/success' element={<Success />} />
         </Routes>
       </BrowserRouter>
     </div>
