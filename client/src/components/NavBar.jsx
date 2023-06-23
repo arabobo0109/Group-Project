@@ -87,13 +87,18 @@ const NavBar = ({ user, setUser }) => {
         ) : (
           // If not logged in, show Login and Register options
           <>
-            <h3 className='mx-4 spinner-grow-sm text-primary' > <Link to="/" className="nav-link">Great Gear Gallery</Link> </h3>
-            <li className="nav-item">
-              <Link to="/checkout" className="nav-link" onClick={closeMenu}>Checkout</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link" onClick={closeMenu}>Login</Link>
-            </li>
+            <h3 className='mx-4 animate__animated animate__slideInLeft'>
+            <Link className="animate__animated animate__fadeIn" to="/" className="nav-link">Great Gear Gallery</Link>
+            </h3>
+
+            <div className='d-flex align-items-center'>
+                <li className="nav-item">
+                <Link to="/checkout" className="nav-link" onClick={closeMenu}>Cart</Link>
+                </li>
+                <li className="nav-item">
+                <Link to="/login" className="nav-link" onClick={closeMenu}>Login</Link>
+                </li>
+            </div>
           </>
         )}
       </ul>
