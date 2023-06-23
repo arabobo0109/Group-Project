@@ -50,6 +50,9 @@ const Login = () => {
                     null
                 }
                 <button>Login</button>
+                <div>
+                    <span>Not already registered? <a href="/register"> Register Here </a> </span>
+                </div>
             </form>
         </div>
     );
