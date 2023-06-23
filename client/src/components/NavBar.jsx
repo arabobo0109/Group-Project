@@ -1,110 +1,63 @@
-import { useState, useEffect } from 'react'
-import { Link, useNavigate, useLocation} from 'react-router-dom'
+// In your NavBar component
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const NavBar = ({ user, setUser }) => {
-    const [navbarOpen, setNavbarOpen] = useState(false);
-    const location = useLocation();
-    const navigate = useNavigate()
-    
-    useEffect(() => {
-        axios
-            .get(`http://localhost:8000/api/user-current`, { withCredentials: true })
-            .then(res => {
-                setUser(res.data);
-            })
-            .catch(err => {
-                console.log("current user error: " + err)
-                setUser({})
-        });
-    }, []);
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
+  const handleToggle = () => {
+    setNavbarOpen(!navbarOpen);
+  };
 
-    const handleToggle = () => {
-        setNavbarOpen(!navbarOpen);
-    }
+  const handleLogout = (e) => {
+    e.preventDefault();
+    axios
+      .get('http://localhost:8000/api/logout', { withCredentials: true })
+      .then(res => {
+        setUser(null);
+        window.location.href = '/';
+      })
+      .catch(err => console.log("logout error: " + err));
+  };
 
-    const closeMenu = () => {
-        setNavbarOpen(false);
-    }
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <button className="navbar-toggler" type="button" onClick={handleToggle}>
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className={`collapse navbar-collapse ${navbarOpen ? "show" : ""}`} id="navbarTogglerDemo02">
+        <ul className="navbar-nav mx-auto text-center">
+          {user ? (
+            <>
+              <li className="nav-item">
+                <Link className="nav-link" to="/">Great Gear Gallery</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/checkout">Cart</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" onClick={handleLogout}>Logout</Link>
+              </li>
+            </>
+          ) : (
+            <>
+            <li className="nav-item">
+                <Link className="nav-link" to="/">Great Gear Gallery</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/checkout">Cart</Link>
+              </li>
 
-    const handleLogout = (e) => {
-        e.preventDefault();
-        console.log("attempting to logout");
-        axios
-            .get('http://localhost:8000/api/logout', { withCredentials: true })
-            .then(res => {
-                setUser(null);
-                console.log("successful logout")
-                window.location.href = '/'
-            })
-            .catch(err => console.log("logout error: " + err));
-    };
-    
-    return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <button className="navbar-toggler" type="button" onClick={handleToggle}>
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className={`collapse navbar-collapse ${navbarOpen ? "show" : ""}`} id="navbarTogglerDemo02">
-      <ul className="navbar-nav mx-auto text-center">
-        <h3 className="navbar-brand">{(user && user.first) ? `Hi ${user.first},` : ""}</h3>
-        {(
-          location.pathname === '/createopenmat' || 
-          location.pathname === '/bjjfaq' ||
-          location.pathname.startsWith('/editopenmat') ||
-          location.pathname.startsWith('/viewopenmat')
-        ) ? (
-          <>
-            <li className="nav-item active">
-              <Link to="/searchopenmats" className="nav-link" onClick={closeMenu}>Home</Link>
-            </li>
             <li className="nav-item">
-              <Link to="/logout" className="nav-link" onClick={handleLogout}>Logout</Link>
+              <Link className="nav-link" to="/login">Login</Link>
             </li>
-          </>
-        ) : (location.pathname === '/searchopenmats') ? (
-          <>
-            <li className="nav-item">
-              <Link to="/bjjfaq" className="px-4 nav-link" onClick={closeMenu}>BJJ FAQ</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/createopenmat" className="nav-link" onClick={closeMenu}>Create Open Mat</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/logout" onClick={handleLogout} className="px-4 nav-link" onChange={closeMenu}>Logout</Link>
-            </li>
-          </>
-        ) : (user && user.first) ? (
-          <>
-            <li className="nav-item">
-              <Link to="/createopenmat" className="nav-link" onClick={closeMenu}>Create Open Mat</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/logout" onClick={handleLogout} className="nav-link" onChange={closeMenu}>Logout</Link>
-            </li>
-          </>
-        ) : (
-          // If not logged in, show Login and Register options
-          <>
-            <h3 className='mx-4 animate__animated animate__slideInLeft'>
-            <Link className="animate__animated animate__fadeIn" to="/" className="nav-link">Great Gear Gallery</Link>
-            </h3>
-
-            <div className='d-flex align-items-center'>
-                <li className="nav-item">
-                <Link to="/checkout" className="nav-link" onClick={closeMenu}>Cart</Link>
-                </li>
-                <li className="nav-item">
-                <Link to="/login" className="nav-link" onClick={closeMenu}>Login</Link>
-                </li>
-            </div>
-          </>
-        )}
-      </ul>
-    </div>
-  </nav>
-    );
-}
+            </>
+          )}
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
 export default NavBar;
