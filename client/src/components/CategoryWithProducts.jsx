@@ -23,7 +23,7 @@ const CategoryWithProducts = () => {
 
   return (
     <div>
-      <h1>{categoryName}</h1>
+      <h1>{categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}</h1>
       {
         category.map((product) => (
           <Link className="text-decoration-none" to={`/oneProduct/${product.id}`}>
