@@ -15,26 +15,16 @@ function App() {
       const [title, setTitle] = useState('Site Header!')
       // 1 ) CREATE A STATE TO SAVE THE USER
       const [user, setUser] = useState(null)
-      
-      useEffect(() => {
-        axios
-          .get('http://localhost:8000/api/user-current', { withCredentials: true })
-          .then(res => {
-            setUser(res.data);
-          })
-          .catch(err => {
-            console.log("current user error: " + err);
-            setUser(null);
-          });
-      }, []);
+
+      const [ isLogged, setIsLogged ] = useState(null)
 
   return (
     <div className="App">
       <BrowserRouter>
-      <NavBar user={user} setUser={setUser} />
+      <NavBar key={user} user={user} setUser={setUser} isLogged={isLogged} setIsLogged={setIsLogged} />
         <Routes>
           <Route exact path ="/" element={<LandingPage  />} />
-          <Route path='/login' element={<Login setUser={setUser}/>} />
+          <Route path='/login' element={<Login setUser={setUser} setIsLogged={setIsLogged} />} />
           <Route path='/register' element={<Register setUser={setUser} />} />
           <Route path='/oneProduct/:productId' element={<OneProduct />} />
           <Route path='/category/:categoryName' element={<CategoryWithProducts />} />
