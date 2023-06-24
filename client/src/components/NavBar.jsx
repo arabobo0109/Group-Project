@@ -64,6 +64,7 @@ const NavBar = ({ user, setUser,isLogged, setIsLogged }) => {
             ) : (
               <li className="nav-item">
                 <Link className="nav-link text-white" to="/login">Login</Link>
+                
               </li>
               
             )}
