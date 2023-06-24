@@ -29,7 +29,8 @@ const OneProduct = () => {
     e.preventDefault();
     // Perform any necessary actions with the chosen quantity before redirecting
     // navigate(`/cart?quantity=${quantity}`);
-    navigate(`/cart/${productId}?quantity=${quantity}`);
+    // navigate(`/cart/${productId}?quantity=${quantity}`);
+    navigate(`/cart/${productId}/${quantity}`);
 
   };
 
