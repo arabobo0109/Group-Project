@@ -39,7 +39,7 @@ function App() {
           <Route path='/category/:categoryName' element={<CategoryWithProducts />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/success' element={<Success />} />
-          <Route path='/cart' element={<Cart cart={cart} setCart={setCart} />} />
+          <Route path='/cart' element={<Cart cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity}  />} />
         </Routes>
       </BrowserRouter>
     </div>
