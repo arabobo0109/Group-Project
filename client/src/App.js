@@ -10,6 +10,7 @@ import OneProduct from './components/OneProduct';
 import CategoryWithProducts from './components/CategoryWithProducts';
 import Payment from './components/Payment';
 import Success from './components/Success';
+import Cart from './components/Cart';
 
 function App() {
 
@@ -28,10 +29,11 @@ function App() {
           <Route exact path ="/" element={<LandingPage  />} />
           <Route path='/login' element={<Login setUser={setUser} setIsLogged={setIsLogged} />} />
           <Route path='/register' element={<Register setUser={setUser} />} />
-          <Route path='/oneProduct/:productId' element={<OneProduct />} />
+          <Route path='/oneProduct/:productId' element={<OneProduct setUser={setUser} isLogged={isLogged} setIsLogged={setIsLogged} />} />
           <Route path='/category/:categoryName' element={<CategoryWithProducts />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/success' element={<Success />} />
+          <Route path='/cart/:productId/:quantity' element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>

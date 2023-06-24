@@ -40,30 +40,35 @@ const NavBar = ({ user, setUser,isLogged, setIsLogged }) => {
       };
   
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <button className="navbar-toggler" type="button" onClick={handleToggle}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-dark text-white">
+        <button className="navbar-toggler bg-light  " type="button" onClick={handleToggle}>
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className={`collapse navbar-collapse ${navbarOpen ? "show" : ""}`} id="navbarTogglerDemo02">
+        <div className={`collapse navbar-collapse px-3 ${navbarOpen ? "show" : ""}`} id="navbarTogglerDemo02">
           <ul className="navbar-nav mx-auto text-center">
             {/* Common Links */}
             <li className="nav-item">
-              <Link className="nav-link" to="/"> <h3> Great Gear Gallery </h3> </Link>
+              <Link className="nav-link text-white" to="/"> <h3> Great Gear Gallery </h3> </Link>
             </li>
+
+            <div className='d-flex align-items-center mx-4'>
             <li className="nav-item">
-              <Link className="nav-link" to="/checkout">Cart</Link>
+              <Link className="nav-link text-white" to="/checkout">Cart</Link>
             </li>
   
             {/* Conditionally rendered based on user login state */}
             {isLogged ? (
               <li className="nav-item">
-                <a href="/" className="nav-link" onClick={handleLogout}>Logout</a>
+                <a href="/" className="nav-link text-white" onClick={handleLogout}>Logout</a>
               </li>
             ) : (
               <li className="nav-item">
-                <Link className="nav-link" to="/login">Login</Link>
+                <Link className="nav-link text-white" to="/login">Login</Link>
+                
               </li>
+              
             )}
+            </div>
           </ul>
         </div>
       </nav>
