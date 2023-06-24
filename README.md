@@ -14,10 +14,11 @@ This is a full-stack e-commerce MERN group project.  Due to membership requireme
 
 ### Features:
 * User Registration, Login, Logout
+* Products on the site retrieved using fakestoreapi.com
 * Shop by category
 * View single items
 * Add items to Cart
 * Change quantity of item in the cart
 * Remove item from the cart
-* Purchase item (simulated)
+* Purchase item (simulated with success message)
 
