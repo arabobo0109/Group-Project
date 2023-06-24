@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Payment from './Payment';
 
 const Cart = () => {
   const { productId, quantity } = useParams();
 
   const [product, setProduct] = useState({});
-
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -21,14 +21,15 @@ const Cart = () => {
             name: res.data.title,
             image: res.data.image,
             price: res.data.price,
-            quantity: 1
+            quantity: quantity
+            // quantity: parseInt(quantity)
           }
         ]);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [productId]);
+  }, [productId, quantity]);
 
   const handleQuantityChange = (event, itemId) => {
     const updatedCartItems = cartItems.map((item) => {
@@ -43,10 +44,10 @@ const Cart = () => {
     setCartItems(updatedCartItems);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Perform necessary actions with the cart items before submitting
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // Perform necessary actions with the cart items before submitting
+  // };
 
   const calculateTotalPrice = () => {
     return cartItems.reduce((total, item) => {
@@ -59,7 +60,7 @@ const Cart = () => {
       <h1>Cart</h1>
       {cartItems.map((item) => (
         <div className="cart-item" key={item.id}>
-          <img src={item.image} alt={item.name} />
+          <img src={item.image} alt={item.name} style={{width: '100px', height: '100px'}}/>
           <h3>{item.name}</h3>
           <p>${item.price} USD</p>
           <label htmlFor={`quantity-${item.id}`}>Quantity:</label>
@@ -73,9 +74,10 @@ const Cart = () => {
         </div>
       ))}
       <h3>Total Price: ${calculateTotalPrice().toFixed(2)} USD</h3>
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Proceed to Payment</button>
-      </form>
+        <Payment />
+      {/* <form onSubmit={handleSubmit}> */}
+        {/* <button type="submit">Proceed to Payment</button> */}
+      {/* </form> */}
     </div>
   );
 };
