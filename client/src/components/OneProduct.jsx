@@ -27,13 +27,16 @@ const OneProduct = ({ user, setUser, isLogged, setIsLogged, cart, setCart, quant
   const submitHandler = (e) => {
     e.preventDefault();
     // Perform any necessary actions with the chosen quantity before redirecting
-    if (isLogged) {
-      //navigate(`/cart/${productId}/${quantity}`);
-      setCart([...cart, {...product, quantity}])
-      navigate('/cart')
+    if (quantity >= 1) { // Check if quantity is greater than or equal to 1
+      if (isLogged) {
+        setCart([...cart, {...product, quantity}])
+        navigate('/cart')
+      } else {
+        alert('Please login to add to Cart');
+        navigate('/login');
+      }
     } else {
-      alert('Please login to add to Cart');
-      navigate('/login');
+      alert('Please enter a valid quantity.');
     }
   };
 

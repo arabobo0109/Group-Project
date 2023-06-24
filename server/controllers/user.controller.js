@@ -65,11 +65,26 @@ module.exports = {
 
     getLogged: async (req, res) => {
         try {
-            const user = jwt.verify(req.cookies.userToken, SECRET);
-            const currentUser = await Model.findOne({ _id: user._id });
+            console.log('Cookies: ', req.cookies); // Logging cookies to check if userToken is present.
+            const user = jwt.verify(req.cookies.userToken, secret); // Changed SECRET to secret
+            console.log('Decoded Token: ', user); // Logging the decoded token
+            const currentUser = await User.findOne({ _id: user._id }); // Changed Model to User
             res.json(currentUser);
         } catch (error) {
+            console.log('Error in getLogged: ', error); // Logging the actual error
             res.status(400).json({ errors: 'failed to get logged in user' })
         }
     }
+    
+
+    // getLogged: async (req, res) => {
+    //     try {
+    //         const user = jwt.verify(req.cookies.userToken, SECRET);
+    //         const currentUser = await Model.findOne({ _id: user._id });
+    //         res.json(currentUser);
+    //     } catch (error) {
+    //         res.status(400).json({ errors: 'failed to get logged in user' })
+    //     }
+    // }
+    
 }

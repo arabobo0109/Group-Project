@@ -17,9 +17,11 @@ function App() {
       // just for fun
       const [title, setTitle] = useState('Site Header!')
       // 1 ) CREATE A STATE TO SAVE THE USER
-      const [user, setUser] = useState(null)
+      const [user, setUser] = useState({})
 
-      const [ isLogged, setIsLogged ] = useState(null)
+      // const [isLogged, setIsLogged] = useState(null)
+
+      const [isLogged, setIsLogged] = useState(false);
 
       const [cart, setCart] = useState([])
 
