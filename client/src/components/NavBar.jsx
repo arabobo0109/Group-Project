@@ -48,7 +48,7 @@ const NavBar = ({ user, setUser,isLogged, setIsLogged }) => {
           <ul className="navbar-nav mx-auto text-center">
             {/* Common Links */}
             <li className="nav-item">
-              <Link className="nav-link" to="/">Great Gear Gallery</Link>
+              <Link className="nav-link" to="/"> <h3> Great Gear Gallery </h3> </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/checkout">Cart</Link>
