@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 
-const OneProduct = ({ user, setUser, isLogged, setIsLogged }) => {
+const OneProduct = ({ user, setUser, isLogged, setIsLogged, cart, setCart, quantity, setQuantity }) => {
   const { productId } = useParams();
   const navigate = useNavigate();
 
   const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     axios
@@ -30,7 +29,8 @@ const OneProduct = ({ user, setUser, isLogged, setIsLogged }) => {
     // Perform any necessary actions with the chosen quantity before redirecting
     if (quantity >= 1) { // Check if quantity is greater than or equal to 1
       if (isLogged) {
-        navigate(`/cart/${productId}/${quantity}`);
+        setCart([...cart, {...product, quantity}])
+        navigate('/cart')
       } else {
         alert('Please login to add to Cart');
         navigate('/login');
