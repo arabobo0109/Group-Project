@@ -29,7 +29,7 @@ function App() {
           <Route exact path ="/" element={<LandingPage  />} />
           <Route path='/login' element={<Login setUser={setUser} setIsLogged={setIsLogged} />} />
           <Route path='/register' element={<Register setUser={setUser} />} />
-          <Route path='/oneProduct/:productId' element={<OneProduct />} />
+          <Route path='/oneProduct/:productId' element={<OneProduct setUser={setUser} isLogged={isLogged} setIsLogged={setIsLogged} />} />
           <Route path='/category/:categoryName' element={<CategoryWithProducts />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/success' element={<Success />} />
