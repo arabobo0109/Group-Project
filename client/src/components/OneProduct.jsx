@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 
-const OneProduct = ({ user, setUser, isLogged, setIsLogged }) => {
+const OneProduct = ({ user, setUser, isLogged, setIsLogged, cart, setCart, quantity, setQuantity }) => {
   const { productId } = useParams();
   const navigate = useNavigate();
 
   const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     axios
@@ -29,7 +28,9 @@ const OneProduct = ({ user, setUser, isLogged, setIsLogged }) => {
     e.preventDefault();
     // Perform any necessary actions with the chosen quantity before redirecting
     if (isLogged) {
-      navigate(`/cart/${productId}/${quantity}`);
+      //navigate(`/cart/${productId}/${quantity}`);
+      setCart([...cart, {...product, quantity}])
+      navigate('/cart')
     } else {
       alert('Please login to add to Cart');
       navigate('/login');

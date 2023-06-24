@@ -21,6 +21,10 @@ function App() {
 
       const [ isLogged, setIsLogged ] = useState(null)
 
+      const [cart, setCart] = useState([])
+
+      const [ quantity, setQuantity] = useState ()
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -29,11 +33,11 @@ function App() {
           <Route exact path ="/" element={<LandingPage  />} />
           <Route path='/login' element={<Login setUser={setUser} setIsLogged={setIsLogged} />} />
           <Route path='/register' element={<Register setUser={setUser} />} />
-          <Route path='/oneProduct/:productId' element={<OneProduct setUser={setUser} isLogged={isLogged} setIsLogged={setIsLogged} />} />
+          <Route path='/oneProduct/:productId' element={<OneProduct setUser={setUser} isLogged={isLogged} setIsLogged={setIsLogged} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
           <Route path='/category/:categoryName' element={<CategoryWithProducts />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/success' element={<Success />} />
-          <Route path='/cart/:productId/:quantity' element={<Cart />} />
+          <Route path='/cart' element={<Cart cart={cart} setCart={setCart} />} />
         </Routes>
       </BrowserRouter>
     </div>
