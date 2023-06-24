@@ -17,9 +17,11 @@ function App() {
       // just for fun
       const [title, setTitle] = useState('Site Header!')
       // 1 ) CREATE A STATE TO SAVE THE USER
-      const [user, setUser] = useState(null)
+      const [user, setUser] = useState({})
 
-      const [ isLogged, setIsLogged ] = useState(null)
+      // const [isLogged, setIsLogged] = useState(null)
+
+      const [isLogged, setIsLogged] = useState(false);
 
   return (
     <div className="App">
@@ -30,6 +32,7 @@ function App() {
           <Route path='/login' element={<Login setUser={setUser} setIsLogged={setIsLogged} />} />
           <Route path='/register' element={<Register setUser={setUser} />} />
           <Route path='/oneProduct/:productId' element={<OneProduct setUser={setUser} isLogged={isLogged} setIsLogged={setIsLogged} />} />
+
           <Route path='/category/:categoryName' element={<CategoryWithProducts />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/success' element={<Success />} />
