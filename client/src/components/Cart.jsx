@@ -3,33 +3,11 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Payment from './Payment';
 
-const Cart = () => {
+const Cart = ({ cart, setCart }) => {
   const { productId, quantity } = useParams();
 
   const [product, setProduct] = useState({});
   const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`https://fakestoreapi.com/products/${productId}`)
-      .then((res) => {
-        console.log(res);
-        setProduct(res.data);
-        setCartItems([
-          {
-            id: res.data.id,
-            name: res.data.title,
-            image: res.data.image,
-            price: res.data.price,
-            quantity: quantity
-            // quantity: parseInt(quantity)
-          }
-        ]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [productId, quantity]);
 
   const handleQuantityChange = (event, itemId) => {
     const updatedCartItems = cartItems.map((item) => {
@@ -58,7 +36,7 @@ const Cart = () => {
   return (
     <div className="container">
       <h1>Cart</h1>
-      {cartItems.map((item) => (
+      {cart.map((item) => (
         <div className="cart-item" key={item.id}>
           <img src={item.image} alt={item.name} style={{width: '100px', height: '100px'}}/>
           <h3>{item.name}</h3>
