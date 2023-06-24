@@ -10,6 +10,7 @@ import OneProduct from './components/OneProduct';
 import CategoryWithProducts from './components/CategoryWithProducts';
 import Payment from './components/Payment';
 import Success from './components/Success';
+import Cart from './components/Cart';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
           <Route path='/category/:categoryName' element={<CategoryWithProducts />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/success' element={<Success />} />
+          <Route path='/cart/:productId' element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>
