@@ -20,5 +20,5 @@ This is a full-stack e-commerce MERN group project.  Due to membership requireme
 * Add items to Cart
 * Change quantity of item in the cart
 * Remove item from the cart
-* Purchase item (simulated)
+* Purchase item (simulated with success message)
 
