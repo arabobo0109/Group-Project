@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import image from '../img/gearlogo.png'
 
 const NavBar = ({ user, setUser, isLogged, setIsLogged, cart, setCart }) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -45,26 +44,33 @@ const NavBar = ({ user, setUser, isLogged, setIsLogged, cart, setCart }) => {
 
 
   return (
-    <nav style={{ height: '150px' }} className="navbar navbar-expand-lg navbar-light bg-dark text-white">
+    <nav className="navbar navbar-expand-lg navbar-light bg-dark text-white">
       <button className="navbar-toggler bg-light" type="button" onClick={handleToggle}>
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className={`collapse navbar-collapse px-3 ${navbarOpen ? "show" : ""}`} id="navbarTogglerDemo02">
-        <ul className="navbar-nav mx-auto text-center align-items-center">
+        <ul className="navbar-nav mx-auto text-center">
           <li className="nav-item">
-              <img style={{ width: '250px' }} src={image} alt="gearlogoAlt" ></img>
-          </li>
-          <li className="nav-item">
+
+            {/* LOOK HERE!!!!!!!!!! */}
+            <img src="./gearlogo.png" alt="gearlogo" />
+            <img src='./img/gearlogo.png' alt="gearlogoAlt" ></img>
+            
+
+
             <Link className="nav-link text-white" to="/">
               <h3>Great Gear Gallery</h3>
             </Link>
           </li>
+
           <div className='d-flex align-items-center mx-4'>
             <li className="nav-item">
-              <Link className="nav-link text-white" to="/cart">
-              Cart {totalItemsInCart > 0 ? <button className='spinner-border  text-danger'>{totalItemsInCart}</button>  : ''}
-              </Link>
+            <Link className="nav-link text-white" to="/cart">
+            Cart {totalItemsInCart > 0 ? <button className='spinner-border  text-danger'>{totalItemsInCart}</button>  : ''}
+            </Link>
+
             </li>
+
             {isLogged ? (
               <li className="nav-item">
                 <a href="/" className="nav-link text-white" onClick={handleLogout}>Logout</a>
