@@ -56,7 +56,7 @@ const OneProduct = ({ user, setUser, isLogged, setIsLogged, cart, setCart }) => 
               onChange={changeHandler}
             />
             {isLogged ? (
-              <button>Add to Cart</button>
+              <button className='btn btn-primary m-2'>Add to Cart</button>
             ) : (
               <>
                 <button disabled>Login required</button>
