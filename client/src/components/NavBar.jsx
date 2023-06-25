@@ -51,6 +51,13 @@ const NavBar = ({ user, setUser, isLogged, setIsLogged, cart, setCart }) => {
       <div className={`collapse navbar-collapse px-3 ${navbarOpen ? "show" : ""}`} id="navbarTogglerDemo02">
         <ul className="navbar-nav mx-auto text-center">
           <li className="nav-item">
+
+            {/* LOOK HERE!!!!!!!!!! */}
+            <img src="./gearlogo.png" alt="gearlogo" />
+            <img src='./img/gearlogo.png' alt="gearlogoAlt" ></img>
+            
+
+
             <Link className="nav-link text-white" to="/">
               <h3>Great Gear Gallery</h3>
             </Link>
