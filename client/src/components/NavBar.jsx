@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../img/gearlogo.png'
+import logo from '../img/gearlogo2.png'
 
 const NavBar = ({ user, setUser, isLogged, setIsLogged, cart, setCart }) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
