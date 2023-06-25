@@ -54,7 +54,7 @@ const NavBar = ({ user, setUser, isLogged, setIsLogged }) => {
 
           <div className='d-flex align-items-center mx-4'>
             <li className="nav-item">
-              <Link className="nav-link text-white" to="/checkout">Cart</Link>
+              <Link className="nav-link text-white" to="/cart">Cart</Link>
             </li>
 
             {isLogged ? (
