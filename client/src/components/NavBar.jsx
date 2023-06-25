@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const NavBar = ({ user, setUser, isLogged, setIsLogged }) => {
+const NavBar = ({ user, setUser, isLogged, setIsLogged, cart, setCart }) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -20,7 +20,6 @@ const NavBar = ({ user, setUser, isLogged, setIsLogged }) => {
         setIsLogged(false);
       });
   }, []); // Empty dependency array to execute only once when component mounts
-  
 
 
   const handleToggle = () => {
@@ -34,10 +33,15 @@ const NavBar = ({ user, setUser, isLogged, setIsLogged }) => {
       .then(res => {
         setUser(null);
         setIsLogged(false);
+        setCart([]); // Reset the cart to an empty array
+        localStorage.removeItem('cart'); // Clear the cart data from local storage
         navigate('/');
       })
       .catch(err => console.log("logout error: " + err));
   };
+
+  const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark text-white">
@@ -54,7 +58,10 @@ const NavBar = ({ user, setUser, isLogged, setIsLogged }) => {
 
           <div className='d-flex align-items-center mx-4'>
             <li className="nav-item">
-              <Link className="nav-link text-white" to="/cart">Cart</Link>
+            <Link className="nav-link text-white" to="/cart">
+            Cart {totalItemsInCart > 0 ? <button className='spinner-border  text-danger'>{totalItemsInCart}</button>  : ''}
+            </Link>
+
             </li>
 
             {isLogged ? (

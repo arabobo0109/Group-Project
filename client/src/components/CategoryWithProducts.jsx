@@ -28,7 +28,7 @@ const CategoryWithProducts = () => {
         category.map((product) => (
           <Link className="text-decoration-none" to={`/oneProduct/${product.id}`}>
             <div className="d-flex align-items-center my-4" key={product.id}>
-              <img className="w-25 mr-4" src={product.image} alt="image" style={{width: '200px', height: '200px'}}/>
+              <img className="w-25 mr-4" src={product.image} alt="image" style={{width: '80px', height: '100px'}}/>
               <p className="text-wrap text-dark mx-4">{product.description.slice(0, 160)}...</p>
               <p>View Product</p>
             </div>
