@@ -51,7 +51,7 @@ const Cart = ({ cart, setCart }) => {
       </div>
     ))}
     <h3>Total Price: ${calculateTotalPrice().toFixed(2)} USD</h3>
-      <Payment />
+      <Payment setCart={setCart}/>
   </div>
 );
 };
