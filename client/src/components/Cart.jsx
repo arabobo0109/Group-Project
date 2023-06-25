@@ -23,26 +23,37 @@ const Cart = ({ cart, setCart }) => {
 
   return (
     <div className="container">
-      <h1>Cart</h1>
-      {cart.map((item) => (
-        <div className="cart-item" key={item.id}>
-          <img src={item.image} alt={item.title} style={{width: '100px', height: '100px'}}/>
-          <h3>{item.title}</h3>
-          <p>${item.price} USD</p>
-          <label htmlFor={`quantity-${item.id}`}>Quantity:</label>
-          <input
-            type="number"
-            id={`quantity-${item.id}`}
-            value={item.quantity}
-            min={1}
-            onChange={(e) => handleQuantityChange(e, item.id)}
-          />
+    <h1>Cart</h1>
+    {cart.map((item) => (
+      <div className="row align-items-center mb-3" key={item.id}>
+        <div className="col-sm-2">
+          <img src={item.image} alt={item.title} className="img-fluid" style={{width: '100px', height: '100px'}} />
         </div>
-      ))}
-      <h3>Total Price: ${calculateTotalPrice().toFixed(2)} USD</h3>
-        <Payment />
-    </div>
-  );
+        <div className="col-sm-3">
+          <h3 className="font-weight-bold small">{item.title}</h3>
+        </div>
+        <div className="col-sm-2">
+          <p>${item.price} USD</p>
+        </div>
+        <div className="col-sm-2">
+          <div>
+            <label htmlFor={`quantity-${item.id}`}>Quantity:</label>
+            <input
+              type="number"
+              id={`quantity-${item.id}`}
+              value={item.quantity}
+              min={1}
+              onChange={(e) => handleQuantityChange(e, item.id)}
+              className="form-control"
+            />
+          </div>
+        </div>
+      </div>
+    ))}
+    <h3>Total Price: ${calculateTotalPrice().toFixed(2)} USD</h3>
+      <Payment />
+  </div>
+);
 };
 
 export default Cart;
