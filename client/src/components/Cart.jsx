@@ -1,5 +1,6 @@
 import React from 'react';
 import Payment from './Payment';
+import {Link} from 'react-router-dom';
 
 const Cart = ({ cart, setCart }) => {
   const handleQuantityChange = (event, productId) => {
@@ -20,6 +21,11 @@ const Cart = ({ cart, setCart }) => {
       return total + item.price * item.quantity;
     }, 0);
   };
+
+  const deleteHandler = (productId) => {
+    const updatedCart = cart.filter((product) => product.id !== productId)
+    setCart(updatedCart)
+  }
 
   return (
     <div className="container">
@@ -48,9 +54,13 @@ const Cart = ({ cart, setCart }) => {
             />
           </div>
         </div>
+        <div className="col-sm-2">
+          <button className='btn btn-danger' onClick={() => deleteHandler(item.id)}>Remove</button>
+        </div>
       </div>
     ))}
-    <h3>Total Price: ${calculateTotalPrice().toFixed(2)} USD</h3>
+    <Link to={'/'}>Continue Shopping?</Link>
+    <h3 className="mt-4">Total Price: ${calculateTotalPrice().toFixed(2)} USD</h3>
       <Payment setCart={setCart}/>
   </div>
 );
