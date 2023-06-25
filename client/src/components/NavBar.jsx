@@ -11,7 +11,7 @@ const NavBar = ({ user, setUser, isLogged, setIsLogged }) => {
     axios
       .get(`http://localhost:8000/api/user-current`, { withCredentials: true })
       .then(res => {
-        console.log(res.data);
+        console.log("Yes current user", res.data);
         setIsLogged(true);
         setUser(res.data);
       })
