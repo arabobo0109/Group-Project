@@ -55,12 +55,13 @@ const Cart = ({ cart, setCart }) => {
           </div>
         </div>
         <div className="col-sm-2">
-          <button className='btn btn-danger' onClick={() => deleteHandler(item.id)}>Remove</button>
+          <button className='btn btn-sm btn-danger' onClick={() => deleteHandler(item.id)}>Remove</button>
         </div>
       </div>
     ))}
     <Link to={'/'}>Continue Shopping?</Link>
     <h3 className="mt-4">Total Price: ${calculateTotalPrice().toFixed(2)} USD</h3>
+    <hr/>
       <Payment setCart={setCart}/>
   </div>
 );
