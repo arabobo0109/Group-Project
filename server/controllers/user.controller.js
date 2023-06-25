@@ -16,7 +16,8 @@ module.exports = {
             }else{
                 // create user
                 const newUser = await User.create(req.body);
-
+                console.log(newUser)
+                console.log("newUser")
                 // Generates a usertoken storing what we pass in (id, email of newly created user) that we want to encode inside the web token. Encode sensitive information that is only decoded by env file secret key
                 const userToken = jwt.sign({_id: newUser._id, email: newUser.email}, secret, {expiresIn:'2h'})
                 
@@ -56,8 +57,6 @@ module.exports = {
             res.status(400).json({error: err})
         }
     },
-
-    
 
     logoutUser: (req, res) => {
         res.clearCookie('userToken').json({message: 'You have logged out'})

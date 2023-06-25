@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
 
-const Register = (props) => {
+const Register = ({setIsLogged}) => {
 
     const navigate = useNavigate();
 
@@ -30,6 +30,8 @@ const Register = (props) => {
             // withCredentials allows the cookie to be sent from server to client
             .then((res) => {
                 console.log(res);
+                console.log ("MADE IT!!!!!")
+                setIsLogged(true);
                 navigate('/')
             })
             .catch((err) => {

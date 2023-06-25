@@ -34,7 +34,7 @@ function App() {
         <Routes>
           <Route exact path ="/" element={<LandingPage  />} />
           <Route path='/login' element={<Login setUser={setUser} setIsLogged={setIsLogged} />} />
-          <Route path='/register' element={<Register setUser={setUser} />} />
+          <Route path='/register' element={<Register setUser={setUser}setIsLogged={setIsLogged}/>} />
           <Route path='/oneProduct/:productId' element={<OneProduct setUser={setUser} isLogged={isLogged} setIsLogged={setIsLogged} cart={cart} setCart={setCart} quantity={quantity} setQuantity={setQuantity} />} />
           <Route path='/category/:categoryName' element={<CategoryWithProducts />} />
           <Route path='/payment' element={<Payment />} />
