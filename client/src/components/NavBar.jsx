@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import logo from '../img/gearlogo.png'
 
 const NavBar = ({ user, setUser, isLogged, setIsLogged, cart, setCart }) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -49,12 +50,13 @@ const NavBar = ({ user, setUser, isLogged, setIsLogged, cart, setCart }) => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className={`collapse navbar-collapse px-3 ${navbarOpen ? "show" : ""}`} id="navbarTogglerDemo02">
-        <ul className="navbar-nav mx-auto text-center">
+        <ul className="navbar-nav mx-auto text-center align-items-center">
+          <li>
+            <img className='logo-size' src={logo} alt="gearlogo" />
+          </li>
           <li className="nav-item">
 
-            {/* LOOK HERE!!!!!!!!!! */}
-            <img src="./gearlogo.png" alt="gearlogo" />
-            <img src='./img/gearlogo.png' alt="gearlogoAlt" ></img>
+            
             
 
 
