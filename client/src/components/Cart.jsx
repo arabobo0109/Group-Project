@@ -6,9 +6,10 @@ const Cart = ({ cart, setCart }) => {
   const handleQuantityChange = (event, productId) => {
     const updatedCart = cart.map((item) => {
       if (item.id === productId) {
+        const quantity = parseInt(event.target.value);
         return {
           ...item,
-          quantity: parseInt(event.target.value),
+          quantity: isNaN(quantity) ? 0 : quantity
         };
       }
       return item;
