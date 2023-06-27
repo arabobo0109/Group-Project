@@ -9,7 +9,7 @@ const Cart = ({ cart, setCart }) => {
         const quantity = parseInt(event.target.value);
         return {
           ...item,
-          quantity: isNaN(quantity) ? 0 : quantity
+          quantity: isNaN(quantity) ? 1 : quantity
         };
       }
       return item;
